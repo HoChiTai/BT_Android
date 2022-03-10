@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Chú thích hình ảnh"
+        android:text="Hình ảnh"
         android:textSize="25dp"
         android:gravity="center"
     />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:hint="Bình luận"
+        android:hint="Chú thích"
         android:minWidth="300dp"
 
         />
