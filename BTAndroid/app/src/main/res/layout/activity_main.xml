@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:layout_marginHorizontal="10dp"
     >
-
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hình ảnh"
-        android:textSize="25dp"
-        android:gravity="center"
-    />
-   <ImageView
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:src="@drawable/android"
-       tools:layout_editor_absoluteX="50dp"
-       tools:layout_editor_absoluteY="210dp"
-       android:layout_marginTop="30dp"
-       android:layout_marginBottom="30dp">
-   </ImageView>
-
+        android:text="Nhập số điện thoại cần gọi:"
+        android:textSize="20dp"
+        android:layout_marginVertical="10dp"
+        />
     <EditText
-        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số điện thoại..."
+        android:layout_marginVertical="10dp"
+        android:inputType="number"
+        android:id="@+id/phoneNumber"
+        />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Chú thích"
-        android:minWidth="300dp"
+        android:text="Gọi"
+        android:gravity="center"
+        android:backgroundTint="#3790E8"
+        android:layout_marginVertical="10dp"
+        android:id="@+id/callButton"
+        >
 
-        />
+    </Button>
 </LinearLayout>
+

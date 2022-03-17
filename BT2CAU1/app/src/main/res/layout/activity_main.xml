@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/android">
+            </ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3790E8"
+                android:paddingVertical="10dp"
+                android:layout_marginVertical="4dp"
+                android:text="New Game"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                >
+
+            </Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3790E8"
+                android:padding="10dp"
+                android:layout_marginVertical="4dp"
+                android:text="Continue Game"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                >
+
+            </Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3790E8"
+                android:padding="10dp"
+                android:layout_marginVertical="4dp"
+                android:text="Help Game"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                >
+
+            </Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:backgroundTint="#3790E8"
+                android:padding="10dp"
+                android:text="Quit Game"
+                android:textAllCaps="false"
+                android:textSize="18dp">
+
+            </Button>
+        </LinearLayout>
+
+
+</LinearLayout>
