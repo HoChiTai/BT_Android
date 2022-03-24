@@ -10,7 +10,8 @@
         android:id="@+id/abc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xem thời gian"
+        android:text="Time now"
+        android:backgroundTint="#15841B"
         ></Button>
 
 </LinearLayout>
