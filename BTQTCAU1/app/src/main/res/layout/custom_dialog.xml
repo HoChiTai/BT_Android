@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#3e51bf"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inspired by the works of artists such as Piet Mondrian and Ben Nicholson."
+        android:textColor="@color/white"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click below to learn more!"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:padding="10dp"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        >-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/btVisit"-->
+<!--            android:text="Visit MOMA"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textAlignment="center"-->
+<!--            android:backgroundTint="#3e51bf"-->
+<!--            android:padding="10dp"-->
+<!--            android:clickable="true"-->
+<!--            android:cursorVisible="false"-->
+<!--            style="?android:attr/borderlessButtonStyle"-->
+<!--            />-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/btCancel"-->
+<!--            android:text="Not Now"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textAlignment="center"-->
+<!--            android:backgroundTint="#3e51bf"-->
+<!--            android:padding="10dp"-->
+<!--            android:clickable="true"-->
+<!--            android:cursorVisible="false"-->
+<!--            style="?android:attr/borderlessButtonStyle"/>-->
+<!--    </LinearLayout>-->
+
+</LinearLayout>
