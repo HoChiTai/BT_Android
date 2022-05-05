@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     EditText number1, number2;
     ListView historyCurrency;
     ArrayList<CountryCurrency> arrayCountryCurrency;
-    ArrayList<String> listHistory;
+    ArrayList<CurrencyConvert> listHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         historyCurrency = (ListView) findViewById(R.id.historyCurrency);
 
         arrayCountryCurrency = new ArrayList<CountryCurrency>();
-        listHistory = new ArrayList<String>();
+        listHistory = new ArrayList<CurrencyConvert>();
         int countryCurrencyLength = countryCurrency.length;
 
         for (int i=0; i<countryCurrencyLength; i++) {
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         CountryCurrencyAdapter countryCurrencyAdapter = new CountryCurrencyAdapter(
-                this,
+                MainActivity.this,
                 R.layout.country_currency_item,
                 arrayCountryCurrency
                 );
@@ -166,7 +167,12 @@ public class MainActivity extends AppCompatActivity {
         btnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new LoadRSSCurrency().execute(idCurrency1,idCurrency2);
+                if (idCurrency1.equalsIgnoreCase(idCurrency2)) {
+                    Toast.makeText(MainActivity.this, "Vui lòng chọn 2 loại tiền tệ khác nhau", Toast.LENGTH_SHORT).show();
+                } else {
+                    new LoadRSSCurrency().execute(idCurrency1, idCurrency2);
+                }
+
             }
         });
 
@@ -230,10 +236,17 @@ public class MainActivity extends AppCompatActivity {
             double db1 = Double.valueOf(String.valueOf(number1.getText()));
             double dbCurrencyCovert = Math.round(db1 * dbCurrency * 10000.0) / 10000.0;
             number2.setText(String.valueOf(dbCurrencyCovert));
-            String item = number1.getText() + " " + idCurrency1 +  "\u21E8" + number2.getText() + " " + idCurrency2;
-            listHistory.add(item);
-            ArrayAdapter temp = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,listHistory);
-            historyCurrency.setAdapter(temp);
+            String currencyConvert1 = number1.getText() + " " + idCurrency1;
+            String currencyConvert2 = number2.getText() + " " + idCurrency2;
+
+            CurrencyConvert currencyConvert = new CurrencyConvert(currencyConvert1,currencyConvert2);
+            listHistory.add(0, currencyConvert);
+            CurrencyConvertAdapter currencyConvertAdapter = new CurrencyConvertAdapter(
+                    MainActivity.this,
+                    R.layout.currency_convert_item,
+                    listHistory
+            );
+            historyCurrency.setAdapter(currencyConvertAdapter);
         }
     }
 }
