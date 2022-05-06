@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 
@@ -51,7 +53,12 @@ public class CustomCountryAdapter extends BaseAdapter {
         nameCountry.setText(arrayCountry.get(i).getName());
 
         flagCountry = (ImageView) view.findViewById(R.id.countryFlag);
-        flagCountry.setImageResource(Integer.parseInt(arrayCountry.get(i).getFlag()));
+
+        Picasso.get()
+                .load(arrayCountry.get(i).getFlag())
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.error)
+                .into(flagCountry);
 
         return view;
     }

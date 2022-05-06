@@ -25,7 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class MainActivity extends AppCompatActivity {
 
     private String pathInfoCountry = "http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=taiho&style=full";
-//    private String pathFlagCountry = "https://flagcdn.com/w160/";
+    private String pathFlagCountry = "https://flagcdn.com/w160/";
     private String pathMapCountry = "https://img.geonames.org/img/country/250/";
     URL url;
     String responseText;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0 ; i < array.length() ; i++) {
                     JSONObject jsonObject = array.getJSONObject(i);
-                    String nameConutry = jsonObject.getString("countryName");
+                    String nameCountry = jsonObject.getString("countryName");
                     String population = jsonObject.getString("population");
                     String area = jsonObject.getString("areaInSqKm");
                     String captital = jsonObject.getString("capital");
@@ -93,15 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
                     String linkMapCountry = pathMapCountry + countryCode.toUpperCase() + ".png";
 
-                    if (countryCode.equals("DO")) {
-                        countryCode += "1";
-                    }
+                    String linkFlagCountry = pathFlagCountry + countryCode.toLowerCase() + ".png";
 
-                    int flagCountry = getResources().getIdentifier(countryCode.toLowerCase(), "drawable", getPackageName());
-
-                    String linkFlagCountry = String.valueOf(flagCountry);
-
-                    Country country = new Country(nameConutry, population, area, linkFlagCountry, captital, linkMapCountry);
+                    Country country = new Country(nameCountry, population, area, linkFlagCountry, captital, linkMapCountry);
 
                     arrayCountry.add(country);
                 }

@@ -1,18 +1,12 @@
 package com.example.btqtcau2;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.squareup.picasso.Picasso;
 
 public class DetailCountry extends AppCompatActivity {
 
@@ -48,7 +42,12 @@ public class DetailCountry extends AppCompatActivity {
             population.setText(strPopulation);
             area.setText(strArea);
 
-            new LoadImageInternet().execute(mapCountry);
+            Picasso.get()
+                    .load(mapCountry)
+                    .placeholder(R.drawable.progress_animation)
+                    .error(R.drawable.error)
+                    .into(map);
+
         }
     }
 
@@ -162,35 +161,4 @@ public class DetailCountry extends AppCompatActivity {
         return strArea;
     }
 
-    class LoadImageInternet extends AsyncTask<String, Void, Bitmap> {
-
-        Bitmap bitmapImage = null;
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-
-            try {
-                URL url = new URL(strings[0]);
-
-                InputStream inputStream = url.openConnection().getInputStream();
-
-                bitmapImage = BitmapFactory.decodeStream(inputStream);
-
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return bitmapImage;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            map.setImageBitmap(bitmap);
-        }
-    }
 }

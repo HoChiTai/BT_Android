@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/layout/activity_detail_country.xml" value="0.1" />
+        <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/drawable/progress_animation.xml" value="0.1555" />
+        <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/layout/activity_detail_country.xml" value="0.264" />
         <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/layout/single_country.xml" value="0.1" />
+        <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/layout/progress_animation.xml" value="0.25" />
+        <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/layout/single_country.xml" value="0.264" />
         <entry key="..\:/Workspace/Java (Android)/BTQTCAU2/app/src/main/res/xml/network_security_config.xml" value="0.25" />
       </map>
     </option>
