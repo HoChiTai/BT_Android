@@ -3,6 +3,7 @@ package com.example.btqtcau1;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,9 +24,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     SeekBar sbColor;
-    TextView block1, block2, block3, block4, block5;
-    Button btVisit, btCancel;
-    CustomDialog customDialog;
+    TextView block1, block2, block3, block4, block5, btVisit, btCancel;
 
 
     @Override
@@ -40,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         block5 = (TextView) findViewById(R.id.block5);
 
         sbColor = (SeekBar) findViewById(R.id.sbColor);
-
-        customDialog = new CustomDialog();
-
-
 
         sbColor.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -94,9 +89,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-//        setContentView(R.layout.custom_dialog);
-        customDialog.show(getSupportFragmentManager(), null);
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog);
+        dialog.show();
 
+        btVisit = (TextView) dialog.findViewById(R.id.btVisit);
+        btCancel = (TextView) dialog.findViewById(R.id.btCancel);
+
+        btVisit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.moma.org"));
+                startActivity(intent);
+            }
+        });
+
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
 
         return true;
     }

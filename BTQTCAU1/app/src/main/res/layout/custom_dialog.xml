@@ -20,36 +20,36 @@
         android:textColor="@color/white"
         android:textAlignment="center"
         android:padding="10dp"/>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center"-->
-<!--        >-->
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/btVisit"-->
-<!--            android:text="Visit MOMA"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textAlignment="center"-->
-<!--            android:backgroundTint="#3e51bf"-->
-<!--            android:padding="10dp"-->
-<!--            android:clickable="true"-->
-<!--            android:cursorVisible="false"-->
-<!--            style="?android:attr/borderlessButtonStyle"-->
-<!--            />-->
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/btCancel"-->
-<!--            android:text="Not Now"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textAlignment="center"-->
-<!--            android:backgroundTint="#3e51bf"-->
-<!--            android:padding="10dp"-->
-<!--            android:clickable="true"-->
-<!--            android:cursorVisible="false"-->
-<!--            style="?android:attr/borderlessButtonStyle"/>-->
-<!--    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btVisit"
+            android:text="Visit MOMA"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:backgroundTint="#3e51bf"
+            android:padding="10dp"
+            android:clickable="true"
+            android:cursorVisible="false"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btCancel"
+            android:text="Not Now"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:backgroundTint="#3e51bf"
+            android:padding="10dp"
+            android:clickable="true"
+            android:cursorVisible="false"
+            style="?android:attr/borderlessButtonStyle"/>
+    </LinearLayout>
 
 </LinearLayout>
