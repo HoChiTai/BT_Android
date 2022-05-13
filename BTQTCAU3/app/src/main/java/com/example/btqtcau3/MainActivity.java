@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     ListView historyCurrency;
     ArrayList<CountryCurrency> arrayCountryCurrency;
     ArrayList<CurrencyConvert> listHistory;
-    ArrayList<String> arrayCountryCurrencyName;
-    ArrayList<String> arrayCountryCurrencyCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         historyCurrency = (ListView) findViewById(R.id.historyCurrency);
 
         arrayCountryCurrency = new ArrayList<CountryCurrency>();
-        arrayCountryCurrencyName = new ArrayList<String>();
-        arrayCountryCurrencyCode = new ArrayList<String>();
         listHistory = new ArrayList<CurrencyConvert>();
 
         new LoadRSSCurrencyInfo().execute();
@@ -67,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] objects) {
             String descriptionCurrency = "";
+            String name = "";
+            String currencyCode = "";
+            String flag = "";
             try {
                 URL url = new URL(currencyInfoLink);
                 InputStream inputStream = url.openConnection().getInputStream();
@@ -86,10 +85,11 @@ public class MainActivity extends AppCompatActivity {
                         else if (xpp.getName().equalsIgnoreCase("title")) {
                             if (insideItem) {
                                 descriptionCurrency = xpp.nextText();
-                                String name = descriptionCurrency.substring(descriptionCurrency.indexOf("/")+1, descriptionCurrency.length()-5);
-                                String currencyCode = descriptionCurrency.substring(descriptionCurrency.length()-4,descriptionCurrency.length()-1);
-                                arrayCountryCurrencyName.add(name);
-                                arrayCountryCurrencyCode.add(currencyCode);
+                                name = descriptionCurrency.substring(descriptionCurrency.indexOf("/")+1, descriptionCurrency.length()-5);
+                                currencyCode = descriptionCurrency.substring(descriptionCurrency.length()-4,descriptionCurrency.length()-1);
+                                flag = countryFlagLink + currencyCode.toLowerCase() + ".webp";
+                                CountryCurrency item = new CountryCurrency(name, currencyCode, flag);
+                                arrayCountryCurrency.add(item);
                             }
                         }
 
@@ -114,17 +114,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-            int countryCurrencyLength = arrayCountryCurrencyName.size();
-            for (int i=0; i<countryCurrencyLength; i++) {
-                String flag = countryFlagLink + arrayCountryCurrencyCode.get(i).toLowerCase() + ".webp";
-                CountryCurrency item = new CountryCurrency(
-                        arrayCountryCurrencyName.get(i),
-                        arrayCountryCurrencyCode.get(i),
-                        flag
-                );
-                arrayCountryCurrency.add(item);
-            }
-
             CountryCurrencyAdapter countryCurrencyAdapter = new CountryCurrencyAdapter(
                     MainActivity.this,
                     R.layout.country_currency_item,
@@ -137,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             currency1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    idCurrency1 = arrayCountryCurrencyCode.get(i);
+                    idCurrency1 = arrayCountryCurrency.get(i).getUnit();
                 }
 
                 @Override
@@ -149,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             currency2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    idCurrency2 = arrayCountryCurrencyCode.get(i);
+                    idCurrency2 = arrayCountryCurrency.get(i).getUnit();
                 }
 
                 @Override
