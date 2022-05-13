@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,9 +50,14 @@ public class CountryCurrencyAdapter extends BaseAdapter {
         TextView nameCurrency = (TextView) view.findViewById(R.id.nameCurrency);
         TextView unitCurrency = (TextView) view.findViewById(R.id.unitCurrency);
 
-        countryFlag.setImageResource(arrayList.get(i).getFlag());
         nameCurrency.setText(arrayList.get(i).getName());
         unitCurrency.setText(arrayList.get(i).getUnit());
+
+        Picasso.get()
+                .load(arrayList.get(i).getFlag())
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.error)
+                .into(countryFlag);
 
         return view;
     }

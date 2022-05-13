@@ -3,9 +3,9 @@ package com.example.btqtcau3;
 public class CountryCurrency {
     private String name;
     private String unit;
-    private int flag;
+    private String flag;
 
-    public CountryCurrency(String name, String unit, int flag) {
+    public CountryCurrency(String name, String unit, String flag) {
         this.name = name;
         this.unit = unit;
         this.flag = flag;
@@ -27,11 +27,11 @@ public class CountryCurrency {
         this.unit = unit;
     }
 
-    public int getFlag() {
+    public String getFlag() {
         return flag;
     }
 
-    public void setFlag(int flag) {
+    public void setFlag(String flag) {
         this.flag = flag;
     }
 }
