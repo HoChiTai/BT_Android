@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createNotificationChannel() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             CharSequence name = "foxandroidReminderChannel";
             String description = "Channel for Alarm Manager";
             int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -169,11 +169,12 @@ public class MainActivity extends AppCompatActivity {
         File file = new File(dir, System.currentTimeMillis()+".jpg");
         try {
             outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outputStream);
+
 
         try {
             outputStream.flush();
@@ -194,13 +195,16 @@ public class MainActivity extends AppCompatActivity {
         if (!dir.exists()) {
             dir.mkdir();
         }
-        for (File file : dir.listFiles()) {
-            String filePath = file.getPath();
-            String fileName = file.getName().toLowerCase();
-            if (fileName.endsWith(".jpg") || fileName.endsWith("jpeg") || fileName.endsWith("png")) {
-                ImageFile imageFile = new ImageFile(filePath, fileName);
-                arrayFile.add(imageFile);
-            }
+        if (dir.listFiles()!=null) {
+            for (File file : dir.listFiles()) {
+                String filePath = file.getPath();
+                String fileName = file.getName().toLowerCase();
+                if (fileName.endsWith(".jpg") || fileName.endsWith("jpeg") || fileName.endsWith("png")) {
+                    ImageFile imageFile = new ImageFile(filePath, fileName);
+                    arrayFile.add(imageFile);
+                }
+        }
+
         }
 
         ImageFileAdapter adapter = new ImageFileAdapter(
