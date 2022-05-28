@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
                 int[] yellowArray = {255, 255, 0};
 
                 redArray[0] = redArray[0] - (255/100)*i;
-                redArray[1] = redArray[1] + (229/100)*i;
-                redArray[2] = redArray[2] + (238/100)*i;
+                redArray[1] = redArray[1] + (255/100)*i;
+                redArray[2] = redArray[2] + (255/100)*i;
                 blueArray[0] = blueArray[0] + (255/100)*i;
-                blueArray[1] = blueArray[1] + (102/100)*i;
+                blueArray[1] = blueArray[1] + (255/100)*i;
                 blueArray[2] = blueArray[2] - (255/100)*i;
-                yellowArray[0] = yellowArray[0] - (125/100)*i;
+                yellowArray[0] = yellowArray[0] - (255/100)*i;
                 yellowArray[1] = yellowArray[1] - (255/100)*i;
-                yellowArray[2] = yellowArray[2] + (130/100)*i;
+                yellowArray[2] = yellowArray[2] + (255/100)*i;
 
                 block1.setBackgroundColor(Color.rgb(blueArray[0],blueArray[1],blueArray[2]));
                 block2.setBackgroundColor(Color.rgb(redArray[0],redArray[1],redArray[2]));
