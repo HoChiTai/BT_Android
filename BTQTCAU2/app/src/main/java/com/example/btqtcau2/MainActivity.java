@@ -3,8 +3,11 @@ package com.example.btqtcau2;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
     private String pathInfoCountry = "http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&username=taiho&style=full";
     private String pathFlagCountry = "https://flagcdn.com/w160/";
-    private String pathMapCountry = "https://img.geonames.org/img/country/250/";
+    private String pathMapCountry = "http://img.geonames.org/img/country/250/";
     URL url;
     String responseText;
     StringBuffer response;
 
     ListView countryList;
     ArrayList<Country> arrayCountry;
+
+    EditText searchNameCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         arrayCountry = new ArrayList<Country>();
         countryList = (ListView) findViewById(R.id.listCountry);
-
+        searchNameCountry = (EditText) findViewById(R.id.searchNameCountry);
 
         new getServerData().execute();
 
@@ -129,6 +134,45 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+            searchNameCountry.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if(!charSequence.equals("") ) {
+                        ArrayList<Country> searchCountryArray = new ArrayList<Country>();
+                        for ( Country item : arrayCountry) {
+                            if (item.getName().toLowerCase().indexOf(charSequence.toString().toLowerCase())!=-1) {
+                                searchCountryArray.add(item);
+                            }
+                        }
+                        CustomCountryAdapter adapter = new CustomCountryAdapter(
+                                MainActivity.this,
+                                R.layout.single_country,
+                                searchCountryArray
+                        );
+                        countryList.setAdapter(adapter);
+                    } else {
+                        CustomCountryAdapter adapter = new CustomCountryAdapter(
+                                MainActivity.this,
+                                R.layout.single_country,
+                                arrayCountry
+                        );
+                        countryList.setAdapter(adapter);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+
         }
 
 
